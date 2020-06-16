@@ -41,6 +41,19 @@
         </license>
     </licenses>
 
+    <dependencyManagement>
+        <dependencies>
+            <!-- importing the microprofile BOM adds MicroProfile specs -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-microprofile</artifactId>
+                <version>20.0.0.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
         <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
@@ -64,6 +77,13 @@
             <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.microprofile.openapi</groupId>
+            <artifactId>microprofile-openapi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
     </dependencies>
 
   

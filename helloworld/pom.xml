@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
     JBoss, Home of Professional Open Source
     Copyright 2015, Red Hat, Inc. and/or its affiliates, and individual
@@ -28,22 +28,35 @@
         <version>7.3.0.GA</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-    <artifactId>helloworld</artifactId>
+    <artifactId>helloworld-rs</artifactId>
     <packaging>war</packaging>
-    <name>Quickstart: helloworld</name>
-    <description>Helloworld</description>
+    <name>Quickstart: helloworld-rs</name>
+    <description>A simple Hello World project that uses JAX-RS</description>
 
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
-            <distribution>repo</distribution>
             <url>http://www.apache.org/licenses/LICENSE-2.0.html</url>
+            <distribution>repo</distribution>
         </license>
     </licenses>
-    
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- importing the microprofile BOM adds MicroProfile specs -->
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-microprofile</artifactId>
+                <version>20.0.0.Final</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
 
-        <!-- Import the CDI API, we use provided scope as the API is included in WildFly -->
+        <!-- Import the CDI API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
             <groupId>jakarta.enterprise</groupId>
             <artifactId>jakarta.enterprise.cdi-api</artifactId>
@@ -51,20 +64,28 @@
         </dependency>
 
         <!-- Import the Common Annotations API (JSR-250), we use provided scope
-            as the API is included in WildFly -->
+            as the API is included in JBoss EAP -->
         <dependency>
             <groupId>org.jboss.spec.javax.annotation</groupId>
             <artifactId>jboss-annotations-api_1.3_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
-        <!-- Import the Servlet API, we use provided scope as the API is included in WildFly -->
+        <!-- Import the JAX-RS API, we use provided scope as the API is included in JBoss EAP -->
         <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_4.0_spec</artifactId>
+            <groupId>org.jboss.spec.javax.ws.rs</groupId>
+            <artifactId>jboss-jaxrs-api_2.1_spec</artifactId>
             <scope>provided</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.eclipse.microprofile.openapi</groupId>
+            <artifactId>microprofile-openapi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
     </dependencies>
+
+  
 
 </project>
